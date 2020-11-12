@@ -2,3 +2,6 @@ SERVORELAIS-*/
 *-rescue*
 gerber/
 VRML/
+*.o
+*.cod
+

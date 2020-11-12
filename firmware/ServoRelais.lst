@@ -1,0 +1,361 @@
+gplink-1.4.0 #1107 (May 18 2015)
+Copyright (c) 1998-2014 gputils project
+Listing File Generated: 11-12-2020  16:13:33
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 3.6.9 #10186 (Linux)
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"main.c"
+                                           	list	p=10f322
+                                           	radix dec
+                                           	include "p10f322.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC10F322 processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; config word(s)
+                                           ;--------------------------------------------------------
+002007   3fe0     addlw   0xe0             	__config 0x3fe0
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	_STATUSbits
+                                           	extern	_PORTAbits
+                                           	extern	_TRISAbits
+                                           	extern	_LATAbits
+                                           	extern	_ANSELAbits
+                                           	extern	_WPUAbits
+                                           	extern	_PCLATHbits
+                                           	extern	_INTCONbits
+                                           	extern	_PIR1bits
+                                           	extern	_PIE1bits
+                                           	extern	_OPTION_REGbits
+                                           	extern	_PCONbits
+                                           	extern	_OSCCONbits
+                                           	extern	_T2CONbits
+                                           	extern	_PWM1DCLbits
+                                           	extern	_PWM1DCHbits
+                                           	extern	_PWM1CONbits
+                                           	extern	_PWM1CON0bits
+                                           	extern	_PWM2DCLbits
+                                           	extern	_PWM2DCHbits
+                                           	extern	_PWM2CONbits
+                                           	extern	_PWM2CON0bits
+                                           	extern	_IOCAPbits
+                                           	extern	_IOCANbits
+                                           	extern	_IOCAFbits
+                                           	extern	_FVRCONbits
+                                           	extern	_ADCONbits
+                                           	extern	_PMADRHbits
+                                           	extern	_PMCON1bits
+                                           	extern	_CLKRCONbits
+                                           	extern	_NCO1ACCLbits
+                                           	extern	_NCO1ACCHbits
+                                           	extern	_NCO1ACCUbits
+                                           	extern	_NCO1INCLbits
+                                           	extern	_NCO1INCHbits
+                                           	extern	_NCO1CONbits
+                                           	extern	_NCO1CLKbits
+                                           	extern	_WDTCONbits
+                                           	extern	_CLC1CONbits
+                                           	extern	_CLC1SEL0bits
+                                           	extern	_CLC1SEL1bits
+                                           	extern	_CLC1POLbits
+                                           	extern	_CLC1GLS0bits
+                                           	extern	_CLC1GLS1bits
+                                           	extern	_CLC1GLS2bits
+                                           	extern	_CLC1GLS3bits
+                                           	extern	_CWG1CON0bits
+                                           	extern	_CWG1CON1bits
+                                           	extern	_CWG1CON2bits
+                                           	extern	_CWG1DBRbits
+                                           	extern	_CWG1DBFbits
+                                           	extern	_VREGCONbits
+                                           	extern	_BORCONbits
+                                           	extern	_INDF
+                                           	extern	_TMR0
+                                           	extern	_PCL
+                                           	extern	_STATUS
+                                           	extern	_FSR
+                                           	extern	_PORTA
+                                           	extern	_TRISA
+                                           	extern	_LATA
+                                           	extern	_ANSELA
+                                           	extern	_WPUA
+                                           	extern	_PCLATH
+                                           	extern	_INTCON
+                                           	extern	_PIR1
+                                           	extern	_PIE1
+                                           	extern	_OPTION_REG
+                                           	extern	_PCON
+                                           	extern	_OSCCON
+                                           	extern	_TMR2
+                                           	extern	_PR2
+                                           	extern	_T2CON
+                                           	extern	_PWM1DCL
+                                           	extern	_PWM1DCH
+                                           	extern	_PWM1CON
+                                           	extern	_PWM1CON0
+                                           	extern	_PWM2DCL
+                                           	extern	_PWM2DCH
+                                           	extern	_PWM2CON
+                                           	extern	_PWM2CON0
+                                           	extern	_IOCAP
+                                           	extern	_IOCAN
+                                           	extern	_IOCAF
+                                           	extern	_FVRCON
+                                           	extern	_ADRES
+                                           	extern	_ADCON
+                                           	extern	_PMADR
+                                           	extern	_PMADRL
+                                           	extern	_PMADRH
+                                           	extern	_PMDAT
+                                           	extern	_PMDATL
+                                           	extern	_PMDATH
+                                           	extern	_PMCON1
+                                           	extern	_PMCON2
+                                           	extern	_CLKRCON
+                                           	extern	_NCO1ACC
+                                           	extern	_NCO1ACCL
+                                           	extern	_NCO1ACCH
+                                           	extern	_NCO1ACCU
+                                           	extern	_NCO1INC
+                                           	extern	_NCO1INCL
+                                           	extern	_NCO1INCH
+                                           	extern	_NCO1INCU
+                                           	extern	_NCO1CON
+                                           	extern	_NCO1CLK
+                                           	extern	_WDTCON
+                                           	extern	_CLC1CON
+                                           	extern	_CLC1SEL0
+                                           	extern	_CLC1SEL1
+                                           	extern	_CLC1POL
+                                           	extern	_CLC1GLS0
+                                           	extern	_CLC1GLS1
+                                           	extern	_CLC1GLS2
+                                           	extern	_CLC1GLS3
+                                           	extern	_CWG1CON0
+                                           	extern	_CWG1CON1
+                                           	extern	_CWG1CON2
+                                           	extern	_CWG1DBR
+                                           	extern	_CWG1DBF
+                                           	extern	_VREGCON
+                                           	extern	_BORCON
+                                           	extern	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_main
+                                           	global	_configPin
+                                           	global	_offCount
+                                           	global	_onCount
+                                           	global	_debounce
+                                           
+                                           	global PSAVE
+                                           	global SSAVE
+                                           	global WSAVE
+                                           	global STK04
+                                           	global STK03
+                                           	global STK02
+                                           	global STK01
+                                           	global STK00
+                                           
+                                           sharebank udata_ovr 0x0040
+                                           PSAVE	res 1
+                                           SSAVE	res 1
+                                           WSAVE	res 1
+                                           STK04	res 1
+                                           STK03	res 1
+                                           STK02	res 1
+                                           STK01	res 1
+                                           STK00	res 1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           UD_main_0	udata
+                                           _configPin	res	1
+                                           
+                                           UD_main_1	udata
+                                           _offCount	res	2
+                                           
+                                           UD_main_2	udata
+                                           _onCount	res	1
+                                           
+                                           UD_main_3	udata
+                                           _debounce	res	1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_main_0	udata
+                                           r0x1005	res	1
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; reset vector 
+                                           ;--------------------------------------------------------
+                                           STARTUP	code 0x0000
+000000   0000     nop                      	nop
+                                           	pagesel __sdcc_gsinit_startup
+000001   2802     goto    0x0002           	goto	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_main	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = M
+                                           ;***
+                                           ;has an exit
+                                           ;1 compiler assigned register :
+                                           ;   r0x1005
+                                           ;; Starting pCode block
+                                           S_main__main	code
+                                           _main:
+                                           ; 2 exit points
+                                           ;	.line	16; "main.c"	TRISA0 = 1;
+00009e   1406     bsf     0x06, 0x0        	BSF	_TRISAbits,0
+                                           ;	.line	17; "main.c"	LATA1 = 0;
+00009f   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+                                           ;	.line	18; "main.c"	TRISA1 = 0;
+0000a0   1086     bcf     0x06, 0x1        	BCF	_TRISAbits,1
+                                           ;	.line	19; "main.c"	TRISA2 = 1;
+0000a1   1506     bsf     0x06, 0x2        	BSF	_TRISAbits,2
+                                           ;	.line	21; "main.c"	OSCCONbits.IRCF = 0b101; // 4MHz
+0000a2   3010     movlw   0x10             	MOVLW	(_OSCCONbits + 0)
+0000a3   398f     andlw   0x8f             	ANDLW	0x8f
+0000a4   3850     iorlw   0x50             	IORLW	0x50
+0000a5   0090     movwf   0x10             	MOVWF	(_OSCCONbits + 0)
+                                           ;	.line	23; "main.c"	configPin = RA2;
+0000a6   01d9     clrf    0x59             	CLRF	r0x1005
+0000a7   1905     btfsc   0x05, 0x2        	BTFSC	_PORTAbits,2
+0000a8   0ad9     incf    0x59, 0x1        	INCF	r0x1005,F
+0000a9   0859     movf    0x59, 0x0        	MOVF	r0x1005,W
+0000aa   00d6     movwf   0x56             	MOVWF	_configPin
+                                           _00134_DS_:
+                                           ;	.line	26; "main.c"	offCount = 0;
+0000ab   01d4     clrf    0x54             	CLRF	_offCount
+0000ac   01d5     clrf    0x55             	CLRF	(_offCount + 1)
+                                           _00108_DS_:
+                                           ;	.line	27; "main.c"	while(!RA0) {
+0000ad   1805     btfsc   0x05, 0x0        	BTFSC	_PORTAbits,0
+0000ae   28bd     goto    0x00bd           	GOTO	_00110_DS_
+                                           ;;unsigned compare: left < lit(0x9C4=2500), size=2
+                                           ;	.line	28; "main.c"	if(offCount < INACTIVE_TIME) offCount++; // 15 instructions (see main.lst)
+0000af   3009     movlw   0x09             	MOVLW	0x09
+0000b0   0255     subwf   0x55, 0x0        	SUBWF	(_offCount + 1),W
+0000b1   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000b2   28b5     goto    0x00b5           	GOTO	_00180_DS_
+0000b3   30c4     movlw   0xc4             	MOVLW	0xc4
+0000b4   0254     subwf   0x54, 0x0        	SUBWF	_offCount,W
+                                           _00180_DS_:
+0000b5   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000b6   28bb     goto    0x00bb           	GOTO	_00106_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
+0000b7   0ad4     incf    0x54, 0x1        	INCF	_offCount,F
+0000b8   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000b9   0ad5     incf    0x55, 0x1        	INCF	(_offCount + 1),F
+0000ba   28ad     goto    0x00ad           	GOTO	_00108_DS_
+                                           _00106_DS_:
+                                           ;	.line	29; "main.c"	else LATA1 = 0; // switch off if inactive too long
+0000bb   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+0000bc   28ad     goto    0x00ad           	GOTO	_00108_DS_
+                                           _00110_DS_:
+                                           ;	.line	31; "main.c"	onCount = 0;
+0000bd   01d7     clrf    0x57             	CLRF	_onCount
+                                           _00113_DS_:
+                                           ;	.line	32; "main.c"	while(RA0) {
+0000be   1c05     btfss   0x05, 0x0        	BTFSS	_PORTAbits,0
+0000bf   28c6     goto    0x00c6           	GOTO	_00115_DS_
+                                           ;;unsigned compare: left < lit(0xFF=255), size=1
+                                           ;	.line	33; "main.c"	if(onCount < 255) onCount++; // 9 instructions (see main.lst)
+0000c0   30ff     movlw   0xff             	MOVLW	0xff
+0000c1   0257     subwf   0x57, 0x0        	SUBWF	_onCount,W
+0000c2   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000c3   28be     goto    0x00be           	GOTO	_00113_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
+0000c4   0ad7     incf    0x57, 0x1        	INCF	_onCount,F
+0000c5   28be     goto    0x00be           	GOTO	_00113_DS_
+                                           ;;swapping arguments (AOP_TYPEs 1/3)
+                                           ;;unsigned compare: left >= lit(0xA7=167), size=1
+                                           _00115_DS_:
+                                           ;	.line	35; "main.c"	if(onCount > PULSETHRES) {
+0000c6   30a7     movlw   0xa7             	MOVLW	0xa7
+0000c7   0257     subwf   0x57, 0x0        	SUBWF	_onCount,W
+0000c8   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0000c9   28da     goto    0x00da           	GOTO	_00131_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
+                                           ;;unsigned compare: left < lit(0x5=5), size=1
+                                           ;	.line	36; "main.c"	if(debounce < DEBOUNCE_MAX) debounce++;
+0000ca   3005     movlw   0x05             	MOVLW	0x05
+                                           ;	.line	37; "main.c"	if(debounce == DEBOUNCE_MAX) {
+0000cb   0258     subwf   0x58, 0x0        	SUBWF	_debounce,W
+0000cc   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0000cd   0ad8     incf    0x58, 0x1        	INCF	_debounce,F
+0000ce   0858     movf    0x58, 0x0        	MOVF	_debounce,W
+0000cf   3a05     xorlw   0x05             	XORLW	0x05
+0000d0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000d1   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           ;	.line	38; "main.c"	if(configPin) LATA1 = 1;
+0000d2   3000     movlw   0x00             	MOVLW	0x00
+0000d3   0456     iorwf   0x56, 0x0        	IORWF	_configPin,W
+0000d4   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000d5   28d8     goto    0x00d8           	GOTO	_00119_DS_
+0000d6   1487     bsf     0x07, 0x1        	BSF	_LATAbits,1
+0000d7   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           _00119_DS_:
+                                           ;	.line	39; "main.c"	else LATA1 = 0;
+0000d8   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+0000d9   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           _00131_DS_:
+                                           ;	.line	42; "main.c"	if(debounce > 0) debounce--;
+0000da   3000     movlw   0x00             	MOVLW	0x00
+                                           ;	.line	43; "main.c"	if(debounce == 0) {
+0000db   0458     iorwf   0x58, 0x0        	IORWF	_debounce,W
+0000dc   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000dd   03d8     decf    0x58, 0x1        	DECF	_debounce,F
+0000de   3000     movlw   0x00             	MOVLW	0x00
+0000df   0458     iorwf   0x58, 0x0        	IORWF	_debounce,W
+0000e0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000e1   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           ;	.line	44; "main.c"	if(configPin) LATA1 = 0;
+0000e2   3000     movlw   0x00             	MOVLW	0x00
+0000e3   0456     iorwf   0x56, 0x0        	IORWF	_configPin,W
+0000e4   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000e5   28e8     goto    0x00e8           	GOTO	_00126_DS_
+0000e6   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+0000e7   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           _00126_DS_:
+                                           ;	.line	45; "main.c"	else LATA1 = 1;
+0000e8   1487     bsf     0x07, 0x1        	BSF	_LATAbits,1
+0000e9   28ab     goto    0x00ab           	GOTO	_00134_DS_
+                                           ;	.line	49; "main.c"	}
+0000ea   0008     return                   	RETURN	
+                                           ; exit point of _main
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	   77+    0 =    77 instructions (  154 byte)
+                                           
+                                           	end
