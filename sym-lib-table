@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name ServoRelais-rescue)(type Legacy)(uri ${KIPRJMOD}/ServoRelais-rescue.lib)(options "")(descr ""))
+  (lib (name ServoRelais)(type Legacy)(uri ${KIPRJMOD}/ServoRelais.lib)(options "")(descr ""))
+)
