@@ -1,4 +1,4 @@
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  1
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  1
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
@@ -57,7 +57,7 @@ LOC    OBJECT CODE    LINE  SOURCE TEXT
   0000                00041         extern  _IOCANbits
   0000                00042         extern  _IOCAFbits
   0000                00043         extern  _FVRCONbits
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  2
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  2
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
@@ -116,7 +116,7 @@ LOC    OBJECT CODE    LINE  SOURCE TEXT
   0000                00094         extern  _PWM1CON0
   0000                00095         extern  _PWM2DCL
   0000                00096         extern  _PWM2DCH
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  3
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  3
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
@@ -175,7 +175,7 @@ LOC    OBJECT CODE    LINE  SOURCE TEXT
   0000                00147         global  _onCount
   0000                00148         global  _debounce
                       00149 
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  4
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  4
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
@@ -234,7 +234,7 @@ LOC    OBJECT CODE    LINE  SOURCE TEXT
                       00200 ; reset vector 
                       00201 ;--------------------------------------------------------
                       00202 STARTUP code 0x0000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  5
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  5
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
@@ -258,145 +258,147 @@ Message[312]: Page or Bank selection not needed for this device. No code generat
                       00217 S_main__main    code
 0000                  00218 _main:
                       00219 ; 2 exit points
-                      00220 ;       .line   16; "main.c"    TRISA0 = 1;
-0000   14??           00221         BSF     _TRISAbits,0
-                      00222 ;       .line   17; "main.c"    LATA1 = 0;
-0001   10??           00223         BCF     _LATAbits,1
-                      00224 ;       .line   18; "main.c"    TRISA1 = 0;
-0002   10??           00225         BCF     _TRISAbits,1
-                      00226 ;       .line   19; "main.c"    TRISA2 = 1;
-0003   15??           00227         BSF     _TRISAbits,2
-                      00228 ;       .line   21; "main.c"    OSCCONbits.IRCF = 0b101; // 4MHz
-0004   30??           00229         MOVLW   (_OSCCONbits + 0)
-0005   398F           00230         ANDLW   0x8f
-0006   3850           00231         IORLW   0x50
-0007   00??           00232         MOVWF   (_OSCCONbits + 0)
-                      00233 ;       .line   23; "main.c"    configPin = RA2;
-0008   01??           00234         CLRF    r0x1005
-0009   19??           00235         BTFSC   _PORTAbits,2
-000A   0A??           00236         INCF    r0x1005,F
-000B   08??           00237         MOVF    r0x1005,W
-000C   00??           00238         MOVWF   _configPin
-000D                  00239 _00134_DS_:
-                      00240 ;       .line   26; "main.c"    offCount = 0;
-000D   01??           00241         CLRF    _offCount
-000E   01??           00242         CLRF    (_offCount + 1)
-000F                  00243 _00108_DS_:
-                      00244 ;       .line   27; "main.c"    while(!RA0) {
-000F   18??           00245         BTFSC   _PORTAbits,0
-0010   2???           00246         GOTO    _00110_DS_
-                      00247 ;;unsigned compare: left < lit(0x9C4=2500), size=2
-                      00248 ;       .line   28; "main.c"    if(offCount < INACTIVE_TIME) offCount++; // 15 instructions (see main.ls
+                      00220 ;       .line   16; "main.c"    NOT_WPUEN = 0; // activate pullups
+0000   13??           00221         BCF     _OPTION_REGbits,7
+                      00222 ;       .line   17; "main.c"    TRISA0 = 1;
+0001   14??           00223         BSF     _TRISAbits,0
+                      00224 ;       .line   18; "main.c"    LATA1 = 0;
+0002   10??           00225         BCF     _LATAbits,1
+                      00226 ;       .line   19; "main.c"    TRISA1 = 0;
+0003   10??           00227         BCF     _TRISAbits,1
+                      00228 ;       .line   20; "main.c"    TRISA2 = 1;
+0004   15??           00229         BSF     _TRISAbits,2
+                      00230 ;       .line   22; "main.c"    OSCCONbits.IRCF = 0b101; // 4MHz
+0005   30??           00231         MOVLW   (_OSCCONbits + 0)
+0006   398F           00232         ANDLW   0x8f
+0007   3850           00233         IORLW   0x50
+0008   00??           00234         MOVWF   (_OSCCONbits + 0)
+                      00235 ;       .line   24; "main.c"    configPin = RA2;
+0009   01??           00236         CLRF    r0x1005
+000A   19??           00237         BTFSC   _PORTAbits,2
+000B   0A??           00238         INCF    r0x1005,F
+000C   08??           00239         MOVF    r0x1005,W
+000D   00??           00240         MOVWF   _configPin
+000E                  00241 _00134_DS_:
+                      00242 ;       .line   27; "main.c"    offCount = 0;
+000E   01??           00243         CLRF    _offCount
+000F   01??           00244         CLRF    (_offCount + 1)
+0010                  00245 _00108_DS_:
+                      00246 ;       .line   28; "main.c"    while(!RA0) {
+0010   18??           00247         BTFSC   _PORTAbits,0
+0011   2???           00248         GOTO    _00110_DS_
+                      00249 ;;unsigned compare: left < lit(0x9C4=2500), size=2
+                      00250 ;       .line   29; "main.c"    if(offCount < INACTIVE_TIME) offCount++; // 15 instructions (see main.ls
                             t)
-0011   3009           00249         MOVLW   0x09
-0012   02??           00250         SUBWF   (_offCount + 1),W
-0013   1D03           00251         BTFSS   STATUS,2
-0014   2???           00252         GOTO    _00180_DS_
-0015   30C4           00253         MOVLW   0xc4
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  6
+0012   3009           00251         MOVLW   0x09
+0013   02??           00252         SUBWF   (_offCount + 1),W
+0014   1D03           00253         BTFSS   STATUS,2
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  6
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
   VALUE
 
-0016   02??           00254         SUBWF   _offCount,W
-0017                  00255 _00180_DS_:
-0017   1803           00256         BTFSC   STATUS,0
-0018   2???           00257         GOTO    _00106_DS_
-                      00258 ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
-0019   0A??           00259         INCF    _offCount,F
-001A   1903           00260         BTFSC   STATUS,2
-001B   0A??           00261         INCF    (_offCount + 1),F
-001C   2???           00262         GOTO    _00108_DS_
-001D                  00263 _00106_DS_:
-                      00264 ;       .line   29; "main.c"    else LATA1 = 0; // switch off if inactive too long
-001D   10??           00265         BCF     _LATAbits,1
-001E   2???           00266         GOTO    _00108_DS_
-001F                  00267 _00110_DS_:
-                      00268 ;       .line   31; "main.c"    onCount = 0;
-001F   01??           00269         CLRF    _onCount
-0020                  00270 _00113_DS_:
-                      00271 ;       .line   32; "main.c"    while(RA0) {
-0020   1C??           00272         BTFSS   _PORTAbits,0
-0021   2???           00273         GOTO    _00115_DS_
-                      00274 ;;unsigned compare: left < lit(0xFF=255), size=1
-                      00275 ;       .line   33; "main.c"    if(onCount < 255) onCount++; // 9 instructions (see main.lst)
-0022   30FF           00276         MOVLW   0xff
-0023   02??           00277         SUBWF   _onCount,W
-0024   1803           00278         BTFSC   STATUS,0
-0025   2???           00279         GOTO    _00113_DS_
-                      00280 ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
-0026   0A??           00281         INCF    _onCount,F
-0027   2???           00282         GOTO    _00113_DS_
-                      00283 ;;swapping arguments (AOP_TYPEs 1/3)
-                      00284 ;;unsigned compare: left >= lit(0xA7=167), size=1
-0028                  00285 _00115_DS_:
-                      00286 ;       .line   35; "main.c"    if(onCount > PULSETHRES) {
-0028   30A7           00287         MOVLW   0xa7
-0029   02??           00288         SUBWF   _onCount,W
-002A   1C03           00289         BTFSS   STATUS,0
-002B   2???           00290         GOTO    _00131_DS_
-                      00291 ;;genSkipc:3257: created from rifx:0x7ffc4ff75040
-                      00292 ;;unsigned compare: left < lit(0x5=5), size=1
-                      00293 ;       .line   36; "main.c"    if(debounce < DEBOUNCE_MAX) debounce++;
-002C   3005           00294         MOVLW   0x05
-                      00295 ;       .line   37; "main.c"    if(debounce == DEBOUNCE_MAX) {
-002D   02??           00296         SUBWF   _debounce,W
-002E   1C03           00297         BTFSS   STATUS,0
-002F   0A??           00298         INCF    _debounce,F
-0030   08??           00299         MOVF    _debounce,W
-0031   3A05           00300         XORLW   0x05
-0032   1D03           00301         BTFSS   STATUS,2
-0033   2???           00302         GOTO    _00134_DS_
-                      00303 ;       .line   38; "main.c"    if(configPin) LATA1 = 1;
-0034   3000           00304         MOVLW   0x00
-0035   04??           00305         IORWF   _configPin,W
-0036   1903           00306         BTFSC   STATUS,2
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  7
+0015   2???           00254         GOTO    _00180_DS_
+0016   30C4           00255         MOVLW   0xc4
+0017   02??           00256         SUBWF   _offCount,W
+0018                  00257 _00180_DS_:
+0018   1803           00258         BTFSC   STATUS,0
+0019   2???           00259         GOTO    _00106_DS_
+                      00260 ;;genSkipc:3257: created from rifx:0x7ffd765861d0
+001A   0A??           00261         INCF    _offCount,F
+001B   1903           00262         BTFSC   STATUS,2
+001C   0A??           00263         INCF    (_offCount + 1),F
+001D   2???           00264         GOTO    _00108_DS_
+001E                  00265 _00106_DS_:
+                      00266 ;       .line   30; "main.c"    else LATA1 = 0; // switch off if inactive too long
+001E   10??           00267         BCF     _LATAbits,1
+001F   2???           00268         GOTO    _00108_DS_
+0020                  00269 _00110_DS_:
+                      00270 ;       .line   32; "main.c"    onCount = 0;
+0020   01??           00271         CLRF    _onCount
+0021                  00272 _00113_DS_:
+                      00273 ;       .line   33; "main.c"    while(RA0) {
+0021   1C??           00274         BTFSS   _PORTAbits,0
+0022   2???           00275         GOTO    _00115_DS_
+                      00276 ;;unsigned compare: left < lit(0xFF=255), size=1
+                      00277 ;       .line   34; "main.c"    if(onCount < 255) onCount++; // 9 instructions (see main.lst)
+0023   30FF           00278         MOVLW   0xff
+0024   02??           00279         SUBWF   _onCount,W
+0025   1803           00280         BTFSC   STATUS,0
+0026   2???           00281         GOTO    _00113_DS_
+                      00282 ;;genSkipc:3257: created from rifx:0x7ffd765861d0
+0027   0A??           00283         INCF    _onCount,F
+0028   2???           00284         GOTO    _00113_DS_
+                      00285 ;;swapping arguments (AOP_TYPEs 1/3)
+                      00286 ;;unsigned compare: left >= lit(0xA7=167), size=1
+0029                  00287 _00115_DS_:
+                      00288 ;       .line   36; "main.c"    if(onCount > PULSETHRES) {
+0029   30A7           00289         MOVLW   0xa7
+002A   02??           00290         SUBWF   _onCount,W
+002B   1C03           00291         BTFSS   STATUS,0
+002C   2???           00292         GOTO    _00131_DS_
+                      00293 ;;genSkipc:3257: created from rifx:0x7ffd765861d0
+                      00294 ;;unsigned compare: left < lit(0x5=5), size=1
+                      00295 ;       .line   37; "main.c"    if(debounce < DEBOUNCE_MAX) debounce++;
+002D   3005           00296         MOVLW   0x05
+                      00297 ;       .line   38; "main.c"    if(debounce == DEBOUNCE_MAX) {
+002E   02??           00298         SUBWF   _debounce,W
+002F   1C03           00299         BTFSS   STATUS,0
+0030   0A??           00300         INCF    _debounce,F
+0031   08??           00301         MOVF    _debounce,W
+0032   3A05           00302         XORLW   0x05
+0033   1D03           00303         BTFSS   STATUS,2
+0034   2???           00304         GOTO    _00134_DS_
+                      00305 ;       .line   39; "main.c"    if(configPin) LATA1 = 1;
+0035   3000           00306         MOVLW   0x00
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  7
 
 
 LOC    OBJECT CODE    LINE  SOURCE TEXT
   VALUE
 
-0037   2???           00307         GOTO    _00119_DS_
-0038   14??           00308         BSF     _LATAbits,1
-0039   2???           00309         GOTO    _00134_DS_
-003A                  00310 _00119_DS_:
-                      00311 ;       .line   39; "main.c"    else LATA1 = 0;
-003A   10??           00312         BCF     _LATAbits,1
-003B   2???           00313         GOTO    _00134_DS_
-003C                  00314 _00131_DS_:
-                      00315 ;       .line   42; "main.c"    if(debounce > 0) debounce--;
-003C   3000           00316         MOVLW   0x00
-                      00317 ;       .line   43; "main.c"    if(debounce == 0) {
-003D   04??           00318         IORWF   _debounce,W
-003E   1D03           00319         BTFSS   STATUS,2
-003F   03??           00320         DECF    _debounce,F
-0040   3000           00321         MOVLW   0x00
-0041   04??           00322         IORWF   _debounce,W
-0042   1D03           00323         BTFSS   STATUS,2
-0043   2???           00324         GOTO    _00134_DS_
-                      00325 ;       .line   44; "main.c"    if(configPin) LATA1 = 0;
-0044   3000           00326         MOVLW   0x00
-0045   04??           00327         IORWF   _configPin,W
-0046   1903           00328         BTFSC   STATUS,2
-0047   2???           00329         GOTO    _00126_DS_
-0048   10??           00330         BCF     _LATAbits,1
-0049   2???           00331         GOTO    _00134_DS_
-004A                  00332 _00126_DS_:
-                      00333 ;       .line   45; "main.c"    else LATA1 = 1;
-004A   14??           00334         BSF     _LATAbits,1
-004B   2???           00335         GOTO    _00134_DS_
-                      00336 ;       .line   49; "main.c"    }
-004C   0008           00337         RETURN  
-                      00338 ; exit point of _main
-                      00339 
-                      00340 
-                      00341 ;       code size estimation:
-                      00342 ;          77+    0 =    77 instructions (  154 byte)
-                      00343 
-                      00344         end
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  8
+0036   04??           00307         IORWF   _configPin,W
+0037   1903           00308         BTFSC   STATUS,2
+0038   2???           00309         GOTO    _00119_DS_
+0039   14??           00310         BSF     _LATAbits,1
+003A   2???           00311         GOTO    _00134_DS_
+003B                  00312 _00119_DS_:
+                      00313 ;       .line   40; "main.c"    else LATA1 = 0;
+003B   10??           00314         BCF     _LATAbits,1
+003C   2???           00315         GOTO    _00134_DS_
+003D                  00316 _00131_DS_:
+                      00317 ;       .line   43; "main.c"    if(debounce > 0) debounce--;
+003D   3000           00318         MOVLW   0x00
+                      00319 ;       .line   44; "main.c"    if(debounce == 0) {
+003E   04??           00320         IORWF   _debounce,W
+003F   1D03           00321         BTFSS   STATUS,2
+0040   03??           00322         DECF    _debounce,F
+0041   3000           00323         MOVLW   0x00
+0042   04??           00324         IORWF   _debounce,W
+0043   1D03           00325         BTFSS   STATUS,2
+0044   2???           00326         GOTO    _00134_DS_
+                      00327 ;       .line   45; "main.c"    if(configPin) LATA1 = 0;
+0045   3000           00328         MOVLW   0x00
+0046   04??           00329         IORWF   _configPin,W
+0047   1903           00330         BTFSC   STATUS,2
+0048   2???           00331         GOTO    _00126_DS_
+0049   10??           00332         BCF     _LATAbits,1
+004A   2???           00333         GOTO    _00134_DS_
+004B                  00334 _00126_DS_:
+                      00335 ;       .line   46; "main.c"    else LATA1 = 1;
+004B   14??           00336         BSF     _LATAbits,1
+004C   2???           00337         GOTO    _00134_DS_
+                      00338 ;       .line   50; "main.c"    }
+004D   0008           00339         RETURN  
+                      00340 ; exit point of _main
+                      00341 
+                      00342 
+                      00343 ;       code size estimation:
+                      00344 ;          78+    0 =    78 instructions (  156 byte)
+                      00345 
+                      00346         end
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  8
 
 
 SYMBOL TABLE
@@ -455,7 +457,7 @@ CWG1DBR4                          00000004
 CWG1DBR5                          00000005
 D1N                               00000000
 D1S0                              00000000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE  9
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE  9
 
 
 SYMBOL TABLE
@@ -514,7 +516,7 @@ G4D3T                             00000005
 G4D4N                             00000006
 G4D4T                             00000007
 G4POL                             00000003
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 10
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 10
 
 
 SYMBOL TABLE
@@ -573,7 +575,7 @@ LC1G1D2N                          00000002
 LC1G1D2T                          00000003
 LC1G1D3N                          00000004
 LC1G1D3T                          00000005
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 11
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 11
 
 
 SYMBOL TABLE
@@ -632,7 +634,7 @@ N1CKS1                            00000001
 N1EN                              00000007
 N1OE                              00000006
 N1OUT                             00000005
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 12
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 12
 
 
 SYMBOL TABLE
@@ -691,7 +693,7 @@ NCO1INC9                          00000001
 NCO1INCH                          0000002B
 NCO1INCL                          0000002A
 NCO1INCU                          0000002C
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 13
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 13
 
 
 SYMBOL TABLE
@@ -750,7 +752,7 @@ PWM2CON                           00000019
 PWM2DCH                           00000018
 PWM2DCH0                          00000000
 PWM2DCH1                          00000001
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 14
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 14
 
 
 SYMBOL TABLE
@@ -809,7 +811,7 @@ TSEN                              00000005
 TSRNG                             00000004
 VREGCON                           0000003E
 VREGPM0                           00000000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 15
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 15
 
 
 SYMBOL TABLE
@@ -833,16 +835,16 @@ WREN                              00000002
 WRERR                             00000003
 WSAVE                             00000042
 Z                                 00000002
-_00106_DS_                        0000001D
-_00108_DS_                        0000000F
-_00110_DS_                        0000001F
-_00113_DS_                        00000020
-_00115_DS_                        00000028
-_00119_DS_                        0000003A
-_00126_DS_                        0000004A
-_00131_DS_                        0000003C
-_00134_DS_                        0000000D
-_00180_DS_                        00000017
+_00106_DS_                        0000001E
+_00108_DS_                        00000010
+_00110_DS_                        00000020
+_00113_DS_                        00000021
+_00115_DS_                        00000029
+_00119_DS_                        0000003B
+_00126_DS_                        0000004B
+_00131_DS_                        0000003D
+_00134_DS_                        0000000E
+_00180_DS_                        00000018
 _ADCON                            00000000
 _ADCONbits                        00000000
 _ADRES                            00000000
@@ -868,7 +870,7 @@ _CLC1GLS2                         00000000
 _CLC1GLS2bits                     00000000
 _CLC1GLS3                         00000000
 _CLC1GLS3bits                     00000000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 16
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 16
 
 
 SYMBOL TABLE
@@ -927,7 +929,7 @@ _NCO1ACCH                         00000000
 _NCO1ACCHbits                     00000000
 _NCO1ACCL                         00000000
 _NCO1ACCLbits                     00000000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 17
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 17
 
 
 SYMBOL TABLE
@@ -986,7 +988,7 @@ _PWM2CONbits                      00000000
 _PWM2DCH                          00000000
 _PWM2DCHbits                      00000000
 _PWM2DCL                          00000000
-gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  16:13:33        PAGE 18
+gpasm-1.4.0 #1107 (May 18 2015)      main.asm   11-12-2020  18:01:51        PAGE 18
 
 
 SYMBOL TABLE

@@ -13,6 +13,7 @@ unsigned char debounce;
 
 void main()
 {
+	NOT_WPUEN = 0; // activate pullups
 	TRISA0 = 1;
 	LATA1 = 0;
 	TRISA1 = 0;
