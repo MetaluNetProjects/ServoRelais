@@ -7,5 +7,5 @@
 (define-layer! 2 (cons 'filename "SERVORELAIS-v1/SERVORELAIS-v1.GBO")(cons 'visible #t)(cons 'color #(49601 0 57568)))
 (define-layer! 1 (cons 'filename "SERVORELAIS-v1/SERVORELAIS-v1.GTO")(cons 'visible #t)(cons 'color #(65535 49928 48465)))
 (define-layer! 0 (cons 'filename "SERVORELAIS-v1/SERVORELAIS-v1.TXT")(cons 'visible #t)(cons 'color #(0 0 0))(cons 'attribs (list (list 'autodetect 'Boolean 1) (list 'zero_supression 'Enum 1) (list 'units 'Enum 0) (list 'digits 'Integer 4))))
-(define-layer! -1 (cons 'filename "/home/arsene/Patchs/MetaluNet/GroupeF/ServoRelais/ServoRelaisPCB/SERVORELAIS-v1/")(cons 'visible #f)(cons 'color #(6393 9474 20228)))
+(define-layer! -1 (cons 'filename "/home/arsene/Patchs/MetaluNet/GroupeF/ServoRelais/SERVORELAIS-v1/")(cons 'visible #f)(cons 'color #(6393 9474 20228)))
 (set-render-type! 2)

@@ -42,7 +42,7 @@ L Connector:Conn_01x03_Female J1
 U 1 1 5FAAD2A2
 P 1050 1450
 F 0 "J1" H 944 1125 50  0000 C CNN
-F 1 "Conn_01x03_Female" H 750 1200 50  0000 C CNN
+F 1 "Conn_01x03_Female" H 1050 1250 50  0000 C CNN
 F 2 "Connectors_Molex:Molex_KK-6410-03_03x2.54mm_Straight" H 1050 1450 50  0001 C CNN
 F 3 "~" H 1050 1450 50  0001 C CNN
 	1    1050 1450
@@ -384,9 +384,6 @@ Wire Wire Line
 	1100 1400 1300 1400
 Wire Wire Line
 	1300 1400 1300 1350
-Connection ~ 1300 1350
-Wire Wire Line
-	1300 1350 1800 1350
 Wire Wire Line
 	1100 1500 1250 1500
 Wire Wire Line
@@ -457,4 +454,57 @@ F 3 "~" H 850 2700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Connection ~ 850  2700
+$Comp
+L Device:R R2
+U 1 1 5FAE5A28
+P 1500 1350
+F 0 "R2" V 1400 1350 50  0000 C CNN
+F 1 "470" V 1500 1350 50  0000 C CNN
+F 2 "Resistors_ThroughHole:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 1430 1350 50  0001 C CNN
+F 3 "~" H 1500 1350 50  0001 C CNN
+	1    1500 1350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1300 1350 1350 1350
+Connection ~ 1300 1350
+Wire Wire Line
+	1650 1350 1800 1350
+$Comp
+L Device:R R3
+U 1 1 5FAE63BB
+P 4000 2050
+F 0 "R3" V 3900 2050 50  0000 C CNN
+F 1 "1k" V 4100 2050 50  0000 C CNN
+F 2 "Resistors_ThroughHole:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 3930 2050 50  0001 C CNN
+F 3 "~" H 4000 2050 50  0001 C CNN
+	1    4000 2050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3800 1200 3800 2050
+Wire Wire Line
+	3800 2050 3850 2050
+$Comp
+L Device:LED D1
+U 1 1 5FAE68AF
+P 4300 2050
+F 0 "D1" H 4292 1795 50  0000 C CNN
+F 1 "LED" H 4292 1886 50  0000 C CNN
+F 2 "LEDs:LED_D3.0mm" H 4300 2050 50  0001 C CNN
+F 3 "~" H 4300 2050 50  0001 C CNN
+	1    4300 2050
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0116
+U 1 1 5FAE6927
+P 4450 2050
+F 0 "#PWR0116" H 4450 1800 50  0001 C CNN
+F 1 "GND" H 4350 1900 50  0000 C CNN
+F 2 "" H 4450 2050 50  0001 C CNN
+F 3 "" H 4450 2050 50  0001 C CNN
+	1    4450 2050
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

@@ -4,4 +4,5 @@ gerber/
 VRML/
 *.o
 *.cod
+*-bak
 
