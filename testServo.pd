@@ -1,0 +1,38 @@
+#N canvas 1183 221 558 474 10;
+#X declare -path Fraise;
+#X obj 21 38 pied/pied 0 41424;
+#X text 206 40 Output RC servo waveforms to K11 (channel 0) and K12
+(channel 1).;
+#X text 209 20 RC servo example for Versa1.0;
+#X floatatom 88 252 8 0 0 0 - - -;
+#X obj 91 211 hsl 128 15 3500 18000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 5600 1;
+#X text 102 175 example range 4000 to 16000 = 0.5 ms to 2 ms (adjust
+the ranges for your servos and mechanical assembly);
+#X msg 88 275 c 20 c 0 i \$1;
+#X obj 255 372 route 20;
+#X obj 255 393 route 0 1;
+#X msg 178 310 c 20 c 254 c 0;
+#X floatatom 255 427 8 0 0 3 pos_0 - -;
+#X floatatom 315 427 8 0 0 3 pos_1 - -;
+#X text 205 65 Here main servo channel is set to 20 in firmware (see
+example1/main.c).;
+#X text 271 310 get current pos of servo 0;
+#X text 310 373 Receive requested channel positions.;
+#X obj 22 120 fruit/fruit 1 servoMaster 20 testServoFW;
+#X obj 19 278 / 8000;
+#X floatatom 19 299 5 0 0 1 ms - -;
+#X obj 88 382 fruit/send2 servoMaster;
+#X obj 255 352 fruit/receive servoMaster;
+#X text 92 235 position of servo channel 0 \, in 1/8 us steps.;
+#X obj 22 6 declare -path Fraise;
+#X connect 3 0 6 0;
+#X connect 3 0 16 0;
+#X connect 4 0 3 0;
+#X connect 6 0 18 0;
+#X connect 7 0 8 0;
+#X connect 8 0 10 0;
+#X connect 8 1 11 0;
+#X connect 9 0 18 0;
+#X connect 16 0 17 0;
+#X connect 19 0 7 0;
