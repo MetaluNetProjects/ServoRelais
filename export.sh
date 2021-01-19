@@ -1,2 +1,2 @@
-./formatgerber.sh SERVORELAIS-v1 gerber/ServoRelaisPanel
+./formatgerber.sh SERVORELAIS-v1.2 gerber/ServoRelaisPanel
 
