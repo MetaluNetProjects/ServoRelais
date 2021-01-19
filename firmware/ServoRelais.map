@@ -1,19 +1,19 @@
 gplink-1.4.0 #1107 (May 18 2015)
-Map File - Created 11-18-2020  19:04:07
+Map File - Created 1-19-2021  18:57:03
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .cinit    romdata   0x000128    program   0x00001c
-              ID_main_0_i    romdata   0x000136    program   0x000004
-             ID_idata_0_i    romdata   0x000138    program   0x000002
+                   .cinit    romdata   0x000146    program   0x00001c
+              ID_main_0_i    romdata   0x000154    program   0x000004
+             ID_idata_0_i    romdata   0x000156    program   0x000002
                   STARTUP       code   0x000000    program   0x000004
 S_idata___sdcc_gsinit_startup       code   0x000002    program   0x000138
-             S_main__main       code   0x00009e    program   0x0000ac
-                    .code       code   0x0000f4    program   0x000068
+             S_main__main       code   0x00009e    program   0x0000e8
+                    .code       code   0x000112    program   0x000068
       .config_2007_MAIN.O       code   0x002007    program   0x000002
                 ID_main_0      idata   0x000056       data   0x000002
-               ID_idata_0      idata   0x00005c       data   0x000001
+               ID_idata_0      idata   0x00005e       data   0x000001
        UD_abs_pic10f322_0      udata   0x000000       data   0x000001
        UD_abs_pic10f322_1      udata   0x000001       data   0x000001
        UD_abs_pic10f322_2      udata   0x000002       data   0x000001
@@ -83,22 +83,24 @@ S_idata___sdcc_gsinit_startup       code   0x000002    program   0x000138
                 UD_main_0      udata   0x000058       data   0x000001
                 UD_main_2      udata   0x000059       data   0x000001
                 UD_main_3      udata   0x00005a       data   0x000001
-               UDL_main_0      udata   0x00005b       data   0x000001
+                UD_main_4      udata   0x00005b       data   0x000001
+                UD_main_5      udata   0x00005c       data   0x000001
+               UDL_main_0      udata   0x00005d       data   0x000001
 
 
 
                               Program Memory Usage
                                Start         End
                            ---------   ---------
-                            0x000136    0x000137
+                            0x000154    0x000155
                             0x000000    0x000001
-                            0x00009e    0x0000f3
+                            0x00009e    0x000111
                             0x002007    0x002007
-                            0x000138    0x000138
+                            0x000156    0x000156
                             0x000002    0x00009d
-                            0x0000f4    0x000127
-                            0x000128    0x000135
-                            314 program addresses used
+                            0x000112    0x000145
+                            0x000146    0x000153
+                            344 program addresses used
 
 
 
@@ -114,17 +116,21 @@ S_idata___sdcc_gsinit_startup       code   0x000002    program   0x000138
                     STK04   0x000043       data     extern main.asm
                     WSAVE   0x000042       data     extern main.asm
                _00105_DS_   0x000062    program     static ../libsdcc_a-idata.asm
-               _00107_DS_   0x0000b5    program     static main.asm
+               _00106_DS_   0x0000ca    program     static main.asm
                _00107_DS_   0x000093    program     static ../libsdcc_a-idata.asm
+               _00108_DS_   0x0000bc    program     static main.asm
                _00108_DS_   0x000015    program     static ../libsdcc_a-idata.asm
                _00110_DS_   0x00009a    program     static ../libsdcc_a-idata.asm
-               _00112_DS_   0x0000c3    program     static main.asm
-               _00114_DS_   0x0000cb    program     static main.asm
-               _00118_DS_   0x0000dd    program     static main.asm
-               _00125_DS_   0x0000f1    program     static main.asm
-               _00132_DS_   0x0000df    program     static main.asm
-               _00135_DS_   0x0000ad    program     static main.asm
-               _00184_DS_   0x0000bd    program     static main.asm
+               _00113_DS_   0x0000ce    program     static main.asm
+               _00115_DS_   0x0000d6    program     static main.asm
+               _00119_DS_   0x0000e9    program     static main.asm
+               _00126_DS_   0x0000fd    program     static main.asm
+               _00133_DS_   0x0000eb    program     static main.asm
+               _00134_DS_   0x0000ff    program     static main.asm
+               _00136_DS_   0x00010c    program     static main.asm
+               _00139_DS_   0x00010e    program     static main.asm
+               _00144_DS_   0x0000b4    program     static main.asm
+               _00202_DS_   0x0000c4    program     static main.asm
                    _ADCON   0x00001f       data     extern pic10f322.asm
                _ADCONbits   0x00001f       data     extern pic10f322.asm
                    _ADRES   0x00001e       data     extern pic10f322.asm
@@ -252,30 +258,32 @@ _S_idata___sdcc_gsinit_startup_0076   0x000078    program     static ../libsdcc_
               _WDTCONbits   0x000030       data     extern pic10f322.asm
                     _WPUA   0x000009       data     extern pic10f322.asm
                 _WPUAbits   0x000009       data     extern pic10f322.asm
-            __codeptrget1   0x000102    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-            __codeptrget2   0x000119    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
-            __dataptrget1   0x0000fb    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-            __dataptrget2   0x00010f    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
-                __gptrget   0x0000f4    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-               __gptrget1   0x0000f4    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-               __gptrget2   0x000107    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+            __codeptrget1   0x000120    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+            __codeptrget2   0x000137    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+            __dataptrget1   0x000119    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+            __dataptrget2   0x00012d    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+                __gptrget   0x000112    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+               __gptrget1   0x000112    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+               __gptrget2   0x000125    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
     __sdcc_gsinit_startup   0x000002    program     extern ../libsdcc_a-idata.asm
-                   _cinit   0x000128    program     extern 
+                   _cinit   0x000146    program     extern 
                _configPin   0x000058       data     extern main.asm
                 _debounce   0x00005a       data     extern main.asm
-             _force_cinit   0x00005c       data     static ../libsdcc_a-idata.asm
+             _force_cinit   0x00005e       data     static ../libsdcc_a-idata.asm
+              _inputState   0x00005b       data     extern main.asm
                     _main   0x00009e    program     extern main.asm
                 _offCount   0x000054       data     extern main.asm
                  _onCount   0x000059       data     extern main.asm
+              _tempoCount   0x00005c       data     extern main.asm
                     _wait   0x000056       data     extern main.asm
                   r0x1000   0x000049       data     static ../libsdcc_a-idata.asm
                   r0x1001   0x000048       data     static ../libsdcc_a-idata.asm
                   r0x1002   0x00004a       data     static ../libsdcc_a-idata.asm
                   r0x1003   0x00004b       data     static ../libsdcc_a-idata.asm
                   r0x1004   0x00004c       data     static ../libsdcc_a-idata.asm
-                  r0x1005   0x00005b       data     static main.asm
                   r0x1005   0x00004d       data     static ../libsdcc_a-idata.asm
                   r0x1006   0x00004f       data     static ../libsdcc_a-idata.asm
+                  r0x1007   0x00005d       data     static main.asm
                   r0x1007   0x00004e       data     static ../libsdcc_a-idata.asm
                   r0x1008   0x000051       data     static ../libsdcc_a-idata.asm
                   r0x1009   0x000050       data     static ../libsdcc_a-idata.asm
@@ -440,28 +448,34 @@ _S_idata___sdcc_gsinit_startup_003F   0x000041    program     static ../libsdcc_
 _S_idata___sdcc_gsinit_startup_0057   0x000059    program     static ../libsdcc_a-idata.asm
                  _onCount   0x000059       data     extern main.asm
                 _debounce   0x00005a       data     extern main.asm
-                  r0x1005   0x00005b       data     static main.asm
-             _force_cinit   0x00005c       data     static ../libsdcc_a-idata.asm
+              _inputState   0x00005b       data     extern main.asm
+              _tempoCount   0x00005c       data     extern main.asm
+                  r0x1007   0x00005d       data     static main.asm
+             _force_cinit   0x00005e       data     static ../libsdcc_a-idata.asm
                _00105_DS_   0x000062    program     static ../libsdcc_a-idata.asm
 _S_idata___sdcc_gsinit_startup_0076   0x000078    program     static ../libsdcc_a-idata.asm
                _00107_DS_   0x000093    program     static ../libsdcc_a-idata.asm
                _00110_DS_   0x00009a    program     static ../libsdcc_a-idata.asm
                     _main   0x00009e    program     extern main.asm
-               _00135_DS_   0x0000ad    program     static main.asm
-               _00107_DS_   0x0000b5    program     static main.asm
-               _00184_DS_   0x0000bd    program     static main.asm
-               _00112_DS_   0x0000c3    program     static main.asm
-               _00114_DS_   0x0000cb    program     static main.asm
-               _00118_DS_   0x0000dd    program     static main.asm
-               _00132_DS_   0x0000df    program     static main.asm
-               _00125_DS_   0x0000f1    program     static main.asm
-                __gptrget   0x0000f4    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-               __gptrget1   0x0000f4    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-            __dataptrget1   0x0000fb    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-            __codeptrget1   0x000102    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
-               __gptrget2   0x000107    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
-            __dataptrget2   0x00010f    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
-            __codeptrget2   0x000119    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
-                   _cinit   0x000128    program     extern 
+               _00144_DS_   0x0000b4    program     static main.asm
+               _00108_DS_   0x0000bc    program     static main.asm
+               _00202_DS_   0x0000c4    program     static main.asm
+               _00106_DS_   0x0000ca    program     static main.asm
+               _00113_DS_   0x0000ce    program     static main.asm
+               _00115_DS_   0x0000d6    program     static main.asm
+               _00119_DS_   0x0000e9    program     static main.asm
+               _00133_DS_   0x0000eb    program     static main.asm
+               _00126_DS_   0x0000fd    program     static main.asm
+               _00134_DS_   0x0000ff    program     static main.asm
+               _00136_DS_   0x00010c    program     static main.asm
+               _00139_DS_   0x00010e    program     static main.asm
+                __gptrget   0x000112    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+               __gptrget1   0x000112    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+            __dataptrget1   0x000119    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+            __codeptrget1   0x000120    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget1.S
+               __gptrget2   0x000125    program     extern /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+            __dataptrget2   0x00012d    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+            __codeptrget2   0x000137    program     static /home/sdcc-builder/build/sdcc-build/orig/sdcc/device/lib/pic14/libsdcc/regular/_gptrget2.S
+                   _cinit   0x000146    program     extern 
 
 

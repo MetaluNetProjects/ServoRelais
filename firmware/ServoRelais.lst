@@ -1,6 +1,6 @@
 gplink-1.4.0 #1107 (May 18 2015)
 Copyright (c) 1998-2014 gputils project
-Listing File Generated: 11-18-2020  19:04:07
+Listing File Generated: 1-19-2021  18:57:03
  
  
 Address  Value    Disassembly              Source
@@ -163,6 +163,8 @@ Address  Value    Disassembly              Source
                                            	global	_offCount
                                            	global	_onCount
                                            	global	_debounce
+                                           	global	_inputState
+                                           	global	_tempoCount
                                            	global	_wait
                                            
                                            	global PSAVE
@@ -199,6 +201,12 @@ Address  Value    Disassembly              Source
                                            UD_main_3	udata
                                            _debounce	res	1
                                            
+                                           UD_main_4	udata
+                                           _inputState	res	1
+                                           
+                                           UD_main_5	udata
+                                           _tempoCount	res	1
+                                           
                                            ;--------------------------------------------------------
                                            ; absolute symbol definitions
                                            ;--------------------------------------------------------
@@ -206,7 +214,7 @@ Address  Value    Disassembly              Source
                                            ; compiler-defined variables
                                            ;--------------------------------------------------------
                                            UDL_main_0	udata
-                                           r0x1005	res	1
+                                           r0x1007	res	1
                                            ;--------------------------------------------------------
                                            ; initialized data
                                            ;--------------------------------------------------------
@@ -235,145 +243,196 @@ Address  Value    Disassembly              Source
                                            ;***
                                            ;has an exit
                                            ;1 compiler assigned register :
-                                           ;   r0x1005
+                                           ;   r0x1007
                                            ;; Starting pCode block
                                            S_main__main	code
                                            _main:
                                            ; 2 exit points
-                                           ;	.line	21; "main.c"	NOT_WPUEN = 0; // activate pullups
+                                           ;	.line	26; "main.c"	NOT_WPUEN = 0; // activate pullups
 00009e   138e     bcf     0x0e, 0x7        	BCF	_OPTION_REGbits,7
-                                           ;	.line	22; "main.c"	ANSELA = 0; // enable digital input buffers
+                                           ;	.line	27; "main.c"	ANSELA = 0; // enable digital input buffers
 00009f   0188     clrf    0x08             	CLRF	_ANSELA
-                                           ;	.line	23; "main.c"	OSCCONbits.IRCF = 0b101; // 4MHz
+                                           ;	.line	28; "main.c"	OSCCONbits.IRCF = 0b101; // 4MHz
 0000a0   3010     movlw   0x10             	MOVLW	(_OSCCONbits + 0)
 0000a1   398f     andlw   0x8f             	ANDLW	0x8f
 0000a2   3850     iorlw   0x50             	IORLW	0x50
 0000a3   0090     movwf   0x10             	MOVWF	(_OSCCONbits + 0)
-                                           ;	.line	25; "main.c"	TRISA0 = 1;
+                                           ;	.line	30; "main.c"	TRISA0 = 1;
 0000a4   1406     bsf     0x06, 0x0        	BSF	_TRISAbits,0
-                                           ;	.line	27; "main.c"	RELAISON = 0;
+                                           ;	.line	32; "main.c"	RELAISON = 0;
 0000a5   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
-                                           ;	.line	28; "main.c"	TRISA1 = 0;
+                                           ;	.line	33; "main.c"	TRISA1 = 0;
 0000a6   1086     bcf     0x06, 0x1        	BCF	_TRISAbits,1
-                                           ;	.line	30; "main.c"	TRISA2 = 1;
+                                           ;	.line	35; "main.c"	TRISA2 = 1;
 0000a7   1506     bsf     0x06, 0x2        	BSF	_TRISAbits,2
-                                           ;	.line	33; "main.c"	configPin = RA2;
-0000a8   01db     clrf    0x5b             	CLRF	r0x1005
+                                           ;	.line	36; "main.c"	configPin = RA2;
+0000a8   01dd     clrf    0x5d             	CLRF	r0x1007
 0000a9   1905     btfsc   0x05, 0x2        	BTFSC	_PORTAbits,2
-0000aa   0adb     incf    0x5b, 0x1        	INCF	r0x1005,F
-0000ab   085b     movf    0x5b, 0x0        	MOVF	r0x1005,W
+0000aa   0add     incf    0x5d, 0x1        	INCF	r0x1007,F
+0000ab   085d     movf    0x5d, 0x0        	MOVF	r0x1007,W
 0000ac   00d8     movwf   0x58             	MOVWF	_configPin
-                                           _00135_DS_:
-                                           ;	.line	39; "main.c"	offCount = 0;
-0000ad   01d4     clrf    0x54             	CLRF	_offCount
-0000ae   01d5     clrf    0x55             	CLRF	(_offCount + 1)
-                                           ;	.line	40; "main.c"	onCount = 0;
-0000af   01d9     clrf    0x59             	CLRF	_onCount
-                                           ;	.line	41; "main.c"	configPin = RA2;
-0000b0   01db     clrf    0x5b             	CLRF	r0x1005
-0000b1   1905     btfsc   0x05, 0x2        	BTFSC	_PORTAbits,2
-0000b2   0adb     incf    0x5b, 0x1        	INCF	r0x1005,F
-0000b3   085b     movf    0x5b, 0x0        	MOVF	r0x1005,W
-0000b4   00d8     movwf   0x58             	MOVWF	_configPin
-                                           _00107_DS_:
-                                           ;	.line	42; "main.c"	while(SERVOPULSE == 0) {
-0000b5   1805     btfsc   0x05, 0x0        	BTFSC	_PORTAbits,0
-0000b6   28c3     goto    0x00c3           	GOTO	_00112_DS_
-                                           ;;unsigned compare: left < lit(0x9C4=2500), size=2
-                                           ;	.line	43; "main.c"	if(offCount < INACTIVE_TIME) offCount++; // 15 instructions (see main.lst)
-0000b7   3009     movlw   0x09             	MOVLW	0x09
-0000b8   0255     subwf   0x55, 0x0        	SUBWF	(_offCount + 1),W
-0000b9   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
-0000ba   28bd     goto    0x00bd           	GOTO	_00184_DS_
-0000bb   30c4     movlw   0xc4             	MOVLW	0xc4
-0000bc   0254     subwf   0x54, 0x0        	SUBWF	_offCount,W
-                                           _00184_DS_:
-0000bd   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
-0000be   28b5     goto    0x00b5           	GOTO	_00107_DS_
-                                           ;;genSkipc:3257: created from rifx:0x7ffce6b381c0
-0000bf   0ad4     incf    0x54, 0x1        	INCF	_offCount,F
-0000c0   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
-0000c1   0ad5     incf    0x55, 0x1        	INCF	(_offCount + 1),F
-0000c2   28b5     goto    0x00b5           	GOTO	_00107_DS_
-                                           _00112_DS_:
-                                           ;	.line	46; "main.c"	while(SERVOPULSE != 0) {
-0000c3   1c05     btfss   0x05, 0x0        	BTFSS	_PORTAbits,0
-0000c4   28cb     goto    0x00cb           	GOTO	_00114_DS_
+                                           ;	.line	38; "main.c"	TMR2IF = 0;
+0000ad   108c     bcf     0x0c, 0x1        	BCF	_PIR1bits,1
+                                           ;	.line	39; "main.c"	TMR2 = 255;
+0000ae   30ff     movlw   0xff             	MOVLW	0xff
+0000af   0091     movwf   0x11             	MOVWF	_TMR2
+                                           ;	.line	40; "main.c"	T2CON = 0b01111111; // Timer2 on, prescaler=1/64 post=1/16
+0000b0   307f     movlw   0x7f             	MOVLW	0x7f
+0000b1   0093     movwf   0x13             	MOVWF	_T2CON
+                                           ;	.line	42; "main.c"	inputState = 0;
+0000b2   01db     clrf    0x5b             	CLRF	_inputState
+                                           ;	.line	43; "main.c"	tempoCount = 0;
+0000b3   01dc     clrf    0x5c             	CLRF	_tempoCount
+                                           _00144_DS_:
+                                           ;	.line	49; "main.c"	offCount = 0;
+0000b4   01d4     clrf    0x54             	CLRF	_offCount
+0000b5   01d5     clrf    0x55             	CLRF	(_offCount + 1)
+                                           ;	.line	50; "main.c"	onCount = 0;
+0000b6   01d9     clrf    0x59             	CLRF	_onCount
+                                           ;	.line	51; "main.c"	configPin = RA2;
+0000b7   01dd     clrf    0x5d             	CLRF	r0x1007
+0000b8   1905     btfsc   0x05, 0x2        	BTFSC	_PORTAbits,2
+0000b9   0add     incf    0x5d, 0x1        	INCF	r0x1007,F
+0000ba   085d     movf    0x5d, 0x0        	MOVF	r0x1007,W
+0000bb   00d8     movwf   0x58             	MOVWF	_configPin
+                                           _00108_DS_:
+                                           ;	.line	52; "main.c"	while(SERVOPULSE == 0) {
+0000bc   1805     btfsc   0x05, 0x0        	BTFSC	_PORTAbits,0
+0000bd   28ce     goto    0x00ce           	GOTO	_00113_DS_
+                                           ;;unsigned compare: left < lit(0x61A8=25000), size=2
+                                           ;	.line	53; "main.c"	if(offCount < INACTIVE_TIME) offCount++; // 15 instructions (see main.lst)
+0000be   3061     movlw   0x61             	MOVLW	0x61
+0000bf   0255     subwf   0x55, 0x0        	SUBWF	(_offCount + 1),W
+0000c0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000c1   28c4     goto    0x00c4           	GOTO	_00202_DS_
+0000c2   30a8     movlw   0xa8             	MOVLW	0xa8
+0000c3   0254     subwf   0x54, 0x0        	SUBWF	_offCount,W
+                                           _00202_DS_:
+0000c4   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000c5   28ca     goto    0x00ca           	GOTO	_00106_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7fffca4838a0
+0000c6   0ad4     incf    0x54, 0x1        	INCF	_offCount,F
+0000c7   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000c8   0ad5     incf    0x55, 0x1        	INCF	(_offCount + 1),F
+0000c9   28bc     goto    0x00bc           	GOTO	_00108_DS_
+                                           _00106_DS_:
+                                           ;	.line	55; "main.c"	RELAISON = 0; // switch off if inactive too long
+0000ca   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+                                           ;	.line	56; "main.c"	inputState = 0;
+0000cb   01db     clrf    0x5b             	CLRF	_inputState
+                                           ;	.line	57; "main.c"	tempoCount = 0;
+0000cc   01dc     clrf    0x5c             	CLRF	_tempoCount
+0000cd   28bc     goto    0x00bc           	GOTO	_00108_DS_
+                                           _00113_DS_:
+                                           ;	.line	60; "main.c"	while(SERVOPULSE != 0) {
+0000ce   1c05     btfss   0x05, 0x0        	BTFSS	_PORTAbits,0
+0000cf   28d6     goto    0x00d6           	GOTO	_00115_DS_
                                            ;;unsigned compare: left < lit(0xFF=255), size=1
-                                           ;	.line	47; "main.c"	if(onCount < 255) onCount++; // 9 instructions (see main.lst)
-0000c5   30ff     movlw   0xff             	MOVLW	0xff
-0000c6   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
-0000c7   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
-0000c8   28c3     goto    0x00c3           	GOTO	_00112_DS_
-                                           ;;genSkipc:3257: created from rifx:0x7ffce6b381c0
-0000c9   0ad9     incf    0x59, 0x1        	INCF	_onCount,F
-0000ca   28c3     goto    0x00c3           	GOTO	_00112_DS_
+                                           ;	.line	61; "main.c"	if(onCount < 255) onCount++; // 9 instructions (see main.lst)
+0000d0   30ff     movlw   0xff             	MOVLW	0xff
+0000d1   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
+0000d2   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000d3   28ce     goto    0x00ce           	GOTO	_00113_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7fffca4838a0
+0000d4   0ad9     incf    0x59, 0x1        	INCF	_onCount,F
+0000d5   28ce     goto    0x00ce           	GOTO	_00113_DS_
                                            ;;swapping arguments (AOP_TYPEs 1/3)
                                            ;;unsigned compare: left >= lit(0xAC=172), size=1
-                                           _00114_DS_:
-                                           ;	.line	49; "main.c"	if(onCount > (PULSETHRES + PULSEDEADBAND)) {
-0000cb   30ac     movlw   0xac             	MOVLW	0xac
-0000cc   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
-0000cd   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
-0000ce   28df     goto    0x00df           	GOTO	_00132_DS_
-                                           ;;genSkipc:3257: created from rifx:0x7ffce6b381c0
+                                           _00115_DS_:
+                                           ;	.line	63; "main.c"	if(onCount > (PULSETHRES + PULSEDEADBAND)) {
+0000d6   30ac     movlw   0xac             	MOVLW	0xac
+0000d7   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
+0000d8   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0000d9   28eb     goto    0x00eb           	GOTO	_00133_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7fffca4838a0
                                            ;;unsigned compare: left < lit(0x5=5), size=1
-                                           ;	.line	50; "main.c"	if(debounce < DEBOUNCE_MAX) debounce++;
-0000cf   3005     movlw   0x05             	MOVLW	0x05
-                                           ;	.line	51; "main.c"	if(debounce == DEBOUNCE_MAX) {
-0000d0   025a     subwf   0x5a, 0x0        	SUBWF	_debounce,W
-0000d1   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
-0000d2   0ada     incf    0x5a, 0x1        	INCF	_debounce,F
-0000d3   085a     movf    0x5a, 0x0        	MOVF	_debounce,W
-0000d4   3a05     xorlw   0x05             	XORLW	0x05
-0000d5   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
-0000d6   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           ;	.line	52; "main.c"	if(configPin) RELAISON = 1;
-0000d7   3000     movlw   0x00             	MOVLW	0x00
-0000d8   0458     iorwf   0x58, 0x0        	IORWF	_configPin,W
-0000d9   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
-0000da   28dd     goto    0x00dd           	GOTO	_00118_DS_
-0000db   1487     bsf     0x07, 0x1        	BSF	_LATAbits,1
-0000dc   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           _00118_DS_:
-                                           ;	.line	53; "main.c"	else RELAISON = 0;
-0000dd   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
-0000de   28ad     goto    0x00ad           	GOTO	_00135_DS_
+                                           ;	.line	64; "main.c"	if(debounce < DEBOUNCE_MAX) debounce++;
+0000da   3005     movlw   0x05             	MOVLW	0x05
+                                           ;	.line	65; "main.c"	if(debounce == DEBOUNCE_MAX) {
+0000db   025a     subwf   0x5a, 0x0        	SUBWF	_debounce,W
+0000dc   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+0000dd   0ada     incf    0x5a, 0x1        	INCF	_debounce,F
+0000de   085a     movf    0x5a, 0x0        	MOVF	_debounce,W
+0000df   3a05     xorlw   0x05             	XORLW	0x05
+0000e0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000e1   28ff     goto    0x00ff           	GOTO	_00134_DS_
+                                           ;	.line	66; "main.c"	if(configPin) inputState = 1;
+0000e2   3000     movlw   0x00             	MOVLW	0x00
+0000e3   0458     iorwf   0x58, 0x0        	IORWF	_configPin,W
+0000e4   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000e5   28e9     goto    0x00e9           	GOTO	_00119_DS_
+0000e6   3001     movlw   0x01             	MOVLW	0x01
+0000e7   00db     movwf   0x5b             	MOVWF	_inputState
+0000e8   28ff     goto    0x00ff           	GOTO	_00134_DS_
+                                           _00119_DS_:
+                                           ;	.line	67; "main.c"	else inputState = 0;
+0000e9   01db     clrf    0x5b             	CLRF	_inputState
+0000ea   28ff     goto    0x00ff           	GOTO	_00134_DS_
                                            ;;unsigned compare: left < lit(0xA1=161), size=1
-                                           _00132_DS_:
-                                           ;	.line	55; "main.c"	} else if(onCount < (PULSETHRES - PULSEDEADBAND)) {
-0000df   30a1     movlw   0xa1             	MOVLW	0xa1
-0000e0   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
-0000e1   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
-0000e2   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           ;;genSkipc:3257: created from rifx:0x7ffce6b381c0
-                                           ;	.line	56; "main.c"	if(debounce > 0) debounce--;
-0000e3   3000     movlw   0x00             	MOVLW	0x00
-                                           ;	.line	57; "main.c"	if(debounce == 0) {
-0000e4   045a     iorwf   0x5a, 0x0        	IORWF	_debounce,W
-0000e5   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
-0000e6   03da     decf    0x5a, 0x1        	DECF	_debounce,F
-0000e7   3000     movlw   0x00             	MOVLW	0x00
-0000e8   045a     iorwf   0x5a, 0x0        	IORWF	_debounce,W
-0000e9   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
-0000ea   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           ;	.line	58; "main.c"	if(configPin) RELAISON = 0;
-0000eb   3000     movlw   0x00             	MOVLW	0x00
-0000ec   0458     iorwf   0x58, 0x0        	IORWF	_configPin,W
-0000ed   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
-0000ee   28f1     goto    0x00f1           	GOTO	_00125_DS_
-0000ef   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
-0000f0   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           _00125_DS_:
-                                           ;	.line	59; "main.c"	else RELAISON = 1;
-0000f1   1487     bsf     0x07, 0x1        	BSF	_LATAbits,1
-0000f2   28ad     goto    0x00ad           	GOTO	_00135_DS_
-                                           ;	.line	63; "main.c"	}
-0000f3   0008     return                   	RETURN	
+                                           _00133_DS_:
+                                           ;	.line	69; "main.c"	} else if(onCount < (PULSETHRES - PULSEDEADBAND)) {
+0000eb   30a1     movlw   0xa1             	MOVLW	0xa1
+0000ec   0259     subwf   0x59, 0x0        	SUBWF	_onCount,W
+0000ed   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+0000ee   28ff     goto    0x00ff           	GOTO	_00134_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7fffca4838a0
+                                           ;	.line	70; "main.c"	if(debounce > 0) debounce--;
+0000ef   3000     movlw   0x00             	MOVLW	0x00
+                                           ;	.line	71; "main.c"	if(debounce == 0) {
+0000f0   045a     iorwf   0x5a, 0x0        	IORWF	_debounce,W
+0000f1   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000f2   03da     decf    0x5a, 0x1        	DECF	_debounce,F
+0000f3   3000     movlw   0x00             	MOVLW	0x00
+0000f4   045a     iorwf   0x5a, 0x0        	IORWF	_debounce,W
+0000f5   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000f6   28ff     goto    0x00ff           	GOTO	_00134_DS_
+                                           ;	.line	72; "main.c"	if(configPin) inputState = 0;
+0000f7   3000     movlw   0x00             	MOVLW	0x00
+0000f8   0458     iorwf   0x58, 0x0        	IORWF	_configPin,W
+0000f9   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000fa   28fd     goto    0x00fd           	GOTO	_00126_DS_
+0000fb   01db     clrf    0x5b             	CLRF	_inputState
+0000fc   28ff     goto    0x00ff           	GOTO	_00134_DS_
+                                           _00126_DS_:
+                                           ;	.line	73; "main.c"	else inputState = 1;
+0000fd   3001     movlw   0x01             	MOVLW	0x01
+0000fe   00db     movwf   0x5b             	MOVWF	_inputState
+                                           _00134_DS_:
+                                           ;	.line	76; "main.c"	if(TMR2IF) { // every 262ms ~= 1/4s
+0000ff   1c8c     btfss   0x0c, 0x1        	BTFSS	_PIR1bits,1
+000100   28b4     goto    0x00b4           	GOTO	_00144_DS_
+                                           ;	.line	77; "main.c"	TMR2IF = 0;
+000101   108c     bcf     0x0c, 0x1        	BCF	_PIR1bits,1
+                                           ;	.line	78; "main.c"	if(inputState) {
+000102   3000     movlw   0x00             	MOVLW	0x00
+000103   045b     iorwf   0x5b, 0x0        	IORWF	_inputState,W
+000104   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+000105   290e     goto    0x010e           	GOTO	_00139_DS_
+                                           ;;unsigned compare: left < lit(0x26=38), size=1
+                                           ;	.line	79; "main.c"	if(tempoCount >= ON_TEMPO) RELAISON = 1;
+000106   3026     movlw   0x26             	MOVLW	0x26
+000107   025c     subwf   0x5c, 0x0        	SUBWF	_tempoCount,W
+000108   1c03     btfss   0x03, 0x0        	BTFSS	STATUS,0
+000109   290c     goto    0x010c           	GOTO	_00136_DS_
+                                           ;;genSkipc:3257: created from rifx:0x7fffca4838a0
+00010a   1487     bsf     0x07, 0x1        	BSF	_LATAbits,1
+00010b   28b4     goto    0x00b4           	GOTO	_00144_DS_
+                                           _00136_DS_:
+                                           ;	.line	80; "main.c"	else tempoCount++;
+00010c   0adc     incf    0x5c, 0x1        	INCF	_tempoCount,F
+00010d   28b4     goto    0x00b4           	GOTO	_00144_DS_
+                                           _00139_DS_:
+                                           ;	.line	82; "main.c"	tempoCount = 0;
+00010e   01dc     clrf    0x5c             	CLRF	_tempoCount
+                                           ;	.line	83; "main.c"	RELAISON = 0;
+00010f   1087     bcf     0x07, 0x1        	BCF	_LATAbits,1
+000110   28b4     goto    0x00b4           	GOTO	_00144_DS_
+                                           ;	.line	87; "main.c"	}
+000111   0008     return                   	RETURN	
                                            ; exit point of _main
                                            
                                            
                                            ;	code size estimation:
-                                           ;	   86+    0 =    86 instructions (  172 byte)
+                                           ;	  116+    0 =   116 instructions (  232 byte)
                                            
                                            	end
